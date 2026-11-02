@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 37% 10%;
+    --foreground: 210 32% 90%;
+    --card: 222 35% 13%;
+    --card-foreground: 210 32% 90%;
+    --popover: 222 40% 8%;
+    --popover-foreground: 210 32% 90%;
+    --primary: 186 100% 50%;
+    --primary-foreground: 222 37% 10%;
+    --secondary: 222 30% 16%;
+    --secondary-foreground: 210 32% 90%;
+    --muted: 222 30% 16%;
+    --muted-foreground: 217 20% 66%;
+    --accent: 326 100% 60%;
+    --accent-foreground: 222 37% 10%;
+    --destructive: 350 89% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 30% 22%;
+    --input: 220 30% 22%;
+    --ring: 186 100% 50%;
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+  body {
+    @apply bg-ink text-metal font-body antialiased;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: #ff36b7;
+    color: #101522;
+  }
+  :focus-visible {
+    outline: 2px solid #00e5ff;
+    outline-offset: 3px;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0e18;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #26304a;
+    border: 2px solid #0a0e18;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00e5ff;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  CRT / VHS overlay system                                           */
+/* ------------------------------------------------------------------ */
+
+.crt-noise {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.crt-scanlines {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 200%;
+  z-index: 61;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.018) 2px,
+    rgba(255, 255, 255, 0.018) 4px
+  );
+  animation: tracking-scroll 8s linear infinite;
+}
+
+.crt-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 62;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(6, 8, 14, 0.55) 100%);
+}
+
+.glitch-band {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 63;
+  pointer-events: none;
+  opacity: 0;
+}
+.glitch-band--1 {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255, 54, 183, 0.8), rgba(0, 229, 255, 0.8), transparent);
+  animation: glitch-sweep 8s ease-in-out infinite;
+}
+.glitch-band--2 {
+  height: 6px;
+  background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.6), rgba(255, 54, 183, 0.6), transparent);
+  animation: glitch-sweep 11s ease-in-out infinite 3s;
+}
+.glitch-band--3 {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(216, 229, 242, 0.7), transparent);
+  animation: glitch-sweep 6s ease-in-out infinite 1s;
+}
+
+@keyframes tracking-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes glitch-sweep {
+  0%, 85%, 100% { opacity: 0; transform: translateY(0); }
+  88% { opacity: 1; transform: translateY(30vh); }
+  92% { opacity: 1; transform: translateY(60vh); }
+  95% { opacity: 0; transform: translateY(100vh); }
+}
+
+@keyframes blink-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
+
+@keyframes fade-boot {
+  from { opacity: 0; transform: translateY(14px) translateX(-2px); }
+  to { opacity: 1; transform: translateY(0) translateX(0); }
+}
+
+.boot > * {
+  animation: fade-boot 0.6s ease-out both;
+}
+.boot > *:nth-child(1) { animation-delay: 0.15s; }
+.boot > *:nth-child(2) { animation-delay: 0.3s; }
+.boot > *:nth-child(3) { animation-delay: 0.45s; }
+.boot > *:nth-child(4) { animation-delay: 0.6s; }
+.boot > *:nth-child(5) { animation-delay: 0.75s; }
+.boot > *:nth-child(6) { animation-delay: 0.9s; }
+
+/* ------------------------------------------------------------------ */
+/*  Scroll reveal (tape wobble)                                        */
+/* ------------------------------------------------------------------ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px) translateX(-3px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+
+/* ------------------------------------------------------------------ */
+/*  Chromatic hover                                                    */
+/* ------------------------------------------------------------------ */
+
+.chroma {
+  transition: text-shadow 0.25s ease-out, color 0.25s ease-out;
+}
+.chroma:hover {
+  text-shadow: -3px 0 rgba(255, 54, 183, 0.75), 3px 0 rgba(0, 229, 255, 0.75);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Buttons                                                            */
+/* ------------------------------------------------------------------ */
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-3 bg-neon text-ink font-display uppercase tracking-[0.12em] px-8 h-14 text-2xl border border-neon transition-all duration-300 cursor-pointer;
+}
+.btn-primary:hover {
+  background: transparent;
+  color: #00e5ff;
+  text-shadow: -2px 0 rgba(255, 54, 183, 0.8), 2px 0 rgba(0, 229, 255, 0.8);
+}
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-3 bg-transparent text-dim font-display uppercase tracking-[0.12em] px-8 h-14 text-2xl border border-line transition-all duration-300 cursor-pointer;
+}
+.btn-secondary:hover {
+  border-color: #00e5ff;
+  color: #00e5ff;
+  transform: translateX(4px);
+}
+
+/* ------------------------------------------------------------------ */
+/*  HUD helpers                                                        */
+/* ------------------------------------------------------------------ */
+
+.hud-label {
+  @apply font-display uppercase tracking-[0.2em] text-dim;
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(0, 229, 255, 0.55);
+}
+
+.glow-cyan {
+  filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.45));
+}
+.glow-magenta {
+  filter: drop-shadow(0 0 18px rgba(255, 54, 183, 0.45));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .crt-scanlines, .glitch-band, .boot > * {
+    animation: none !important;
+  }
+  .boot > *, .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
