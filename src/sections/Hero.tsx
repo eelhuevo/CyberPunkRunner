@@ -13,7 +13,7 @@ export function Hero() {
       {/* Fondo: key art */}
       <div className="absolute inset-0" aria-hidden="true">
         <img
-          src="/images/hero-neo-cyber.jpg"
+          src="./images/hero-neo-cyber.jpg"
           alt=""
           className="h-full w-full object-cover object-center"
         />

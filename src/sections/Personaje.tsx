@@ -59,7 +59,7 @@ export function Personaje() {
                 STATUS: ACTIVO
               </p>
               <img
-                src="/images/nex01-character.png"
+                src="./images/nex01-character.png"
                 alt="NEX-01, robot corredor humanoide Low Poly con armadura plateada y azul oscuro, visera cian luminosa y núcleo de energía magenta"
                 className="glow-cyan relative z-10 w-full"
               />
