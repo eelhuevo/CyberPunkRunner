@@ -244,3 +244,36 @@
     transition: none !important;
   }
 }
+
+/* Animación de interferencia de TV (solo parpadeo de opacidad) */
+@keyframes tv-static {
+  0%, 100% { opacity: 0.8; }
+  10% { opacity: 0.4; }
+  15% { opacity: 0.9; }
+  20% { opacity: 0.5; }
+  25% { opacity: 0.85; }
+  30% { opacity: 0.3; }
+  35% { opacity: 0.9; }
+  40% { opacity: 0.6; }
+  45% { opacity: 1; }
+  50% { opacity: 0.5; }
+  55% { opacity: 0.8; }
+  60% { opacity: 0.4; }
+  65% { opacity: 0.95; }
+  70% { opacity: 0.6; }
+  75% { opacity: 0.85; }
+  80% { opacity: 0.5; }
+  85% { opacity: 1; }
+  90% { opacity: 0.4; }
+  95% { opacity: 0.8; }
+}
+
+.animate-tv-static {
+  animation: tv-static 5.0s infinite; /* Puedes subir a 0.5s si quieres que sea más lento */
+}
+
+/* Máscara radial para difuminar los bordes de la imagen */
+.mask-radial-fade {
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+}
