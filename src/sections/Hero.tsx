@@ -1,9 +1,9 @@
 import { ArrowDown, BookOpen, Play } from 'lucide-react'
-import { GAME } from '../config'
+import { GAME_1 } from '../config'
 
 const metrics = [
-  { value: GAME.targetScore, label: 'Puntos para la meta' },
-  { value: GAME.lives, label: 'Vidas iniciales' },
+  { value: GAME_1.targetScore, label: 'Puntos para la meta' },
+  { value: GAME_1.lives, label: 'Vidas iniciales' },
   { value: '↑ ↓', label: 'Salta · Agáchate' },
 ]
 
@@ -25,18 +25,18 @@ export function Hero() {
         <div className="boot max-w-3xl">
           <p className="inline-flex items-center gap-3 border border-neon/50 bg-inkdeep/70 px-4 py-2 font-display text-lg uppercase tracking-[0.24em] text-neon backdrop-blur-sm">
             <span className="inline-block h-2 w-2 bg-pulse" style={{ animation: 'blink-dot 1s step-end infinite' }} />
-            {GAME.genre}
+            {GAME_1.genre}
           </p>
 
           <h1 className="mt-6 font-display uppercase leading-[0.85]">
-            <span className="chroma block text-7xl text-metal sm:text-8xl lg:text-9xl">{GAME.title}</span>
-            <span className="text-outline block text-6xl sm:text-7xl lg:text-8xl">{GAME.subtitle}</span>
+            <span className="chroma block text-7xl text-metal sm:text-8xl lg:text-9xl">{GAME_1.title}</span>
+            <span className="text-outline block text-6xl sm:text-7xl lg:text-8xl">{GAME_1.subtitle}</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-lg font-medium text-metal sm:text-xl">
-            {GAME.tagline}
+            {GAME_1.tagline}
           </p>
-          <p className="mt-3 max-w-xl text-base text-dim">{GAME.synopsis}</p>
+          <p className="mt-3 max-w-xl text-base text-dim">{GAME_1.synopsis}</p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a href="#jugar" className="btn-primary">

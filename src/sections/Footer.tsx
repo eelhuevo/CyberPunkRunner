@@ -1,5 +1,5 @@
 import { ChevronUp } from 'lucide-react'
-import { GAME } from '../config'
+import { GAME_1 } from '../config'
 
 export function Footer() {
   return (
@@ -11,14 +11,14 @@ export function Footer() {
               CYBER<span className="text-neon">_</span>RUNNER
             </p>
             <p className="mt-2 max-w-sm text-sm leading-relaxed text-dim">
-              Portal de divulgación técnica y promoción del videojuego. {GAME.course}. Desarrollado
+              Portal de divulgación técnica y promoción del videojuego. {GAME_1.course}. Desarrollado
               en Unity con modelado en Blender.
             </p>
           </div>
           <div>
             <p className="hud-label text-sm">Equipo de desarrollo</p>
             <ul className="mt-3 space-y-1">
-              {GAME.team.map((member) => (
+              {GAME_1.team.map((member) => (
                 <li key={member} className="text-base text-metal">
                   {member}
                 </li>
@@ -39,7 +39,7 @@ export function Footer() {
             NEO-CYBER // SYS.ALERT ACTIVA
           </p>
           <p className="font-display text-lg uppercase tracking-[0.2em] text-dim">
-            {GAME.genre} · LOW POLY
+            {GAME_1.genre} · LOW POLY
           </p>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { GAME, NAV_LINKS } from '../config'
+import { GAME_1, NAV_LINKS } from '../config'
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -29,21 +29,28 @@ export function Header() {
             <span className="ml-1 inline-block h-3 w-3 bg-pulse align-middle" style={{ animation: 'blink-dot 1.2s step-end infinite' }} />
           </a>
 
-          <nav className="hidden items-center gap-7 md:flex" aria-label="Navegación principal">
+          {/* MENÚ DE ESCRITORIO ACTUALIZADO */}
+          <nav className="hidden items-center gap-5 md:flex" aria-label="Navegación principal">
             {NAV_LINKS.slice(0, 4).map((link) => (
               <a
                 key={link.id}
                 href={`#${link.id}`}
-                className="font-display text-xl uppercase tracking-[0.16em] text-dim transition-colors duration-200 hover:text-neon"
+                className="font-display text-lg uppercase tracking-[0.16em] text-dim transition-colors duration-200 hover:text-neon"
               >
                 {link.label}
               </a>
             ))}
             <a
-              href="#jugar"
-              className="border border-neon px-5 py-2 font-display text-xl uppercase tracking-[0.16em] text-neon transition-all duration-200 hover:bg-neon hover:text-ink"
+              href="#juego-1"
+              className="font-display text-lg uppercase tracking-[0.16em] text-neon transition-colors duration-200 hover:text-metal"
             >
-              Jugar ahora
+              Juego 1
+            </a>
+            <a
+              href="#juego-2"
+              className="border border-pulse px-4 py-1.5 font-display text-lg uppercase tracking-[0.16em] text-pulse transition-all duration-200 hover:bg-pulse hover:text-ink"
+            >
+              Juego 2
             </a>
           </nav>
 
@@ -59,6 +66,7 @@ export function Header() {
         </div>
       </header>
 
+      {/* MENÚ MÓVIL */}
       {open && (
         <div
           className="fixed inset-0 z-[90] flex flex-col bg-inkdeep/97 backdrop-blur-lg"
@@ -96,7 +104,7 @@ export function Header() {
             ))}
           </nav>
           <p className="px-8 pb-8 font-display text-lg uppercase tracking-[0.2em] text-dim">
-            {GAME.genre} // NEO-CYBER
+            {GAME_1.genre} // NEO-CYBER
           </p>
         </div>
       )}

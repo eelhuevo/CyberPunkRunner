@@ -1,9 +1,9 @@
 import { Reveal } from '../hooks/useReveal'
-import { GAME } from '../config'
+import { GAME_1 } from '../config'
 
 const cards = [
-  { value: GAME.targetScore, label: 'Puntuación objetivo', note: 'Activa el mensaje de récord' },
-  { value: GAME.lives, label: 'Vidas por partida', note: 'Cada colisión resta una' },
+  { value: GAME_1.targetScore, label: 'Puntuación objetivo', note: 'Activa el mensaje de récord' },
+  { value: GAME_1.lives, label: 'Vidas por partida', note: 'Cada colisión resta una' },
   { value: '2', label: 'Controles de acción', note: 'Saltar y agacharse' },
   { value: '∞', label: 'Distancia de recorrido', note: 'Generación continua de obstáculos' },
 ]
@@ -82,7 +82,7 @@ export function Datos() {
           <Reveal className="reveal-d3 border border-line bg-panel/50 p-6 sm:p-8">
             <p className="hud-label text-sm">Identidad visual // Paleta Neo-Cyber</p>
             <div className="mt-6 grid grid-cols-2 gap-4">
-              {GAME.palette.map((p) => (
+              {GAME_1.palette.map((p) => (
                 <div key={p.hex} className="group border border-line">
                   <div
                     className="h-16 w-full transition-transform duration-200 group-hover:scale-[1.02]"
@@ -97,7 +97,7 @@ export function Datos() {
               ))}
             </div>
             <p className="mt-5 text-sm text-dim">
-              Estilo artístico <span className="text-metal">Low Poly</span> · Motor {GAME.engine}
+              Estilo artístico <span className="text-metal">Low Poly</span> · Motor {GAME_1.engine}
             </p>
           </Reveal>
         </div>
