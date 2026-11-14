@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ExternalLink, Gamepad2, MonitorCheck, Keyboard, Wifi, Play } from 'lucide-react'
+import { ExternalLink, Gamepad2, Play } from 'lucide-react'
 import { Reveal } from '../hooks/useReveal'
 import { GAME_1, GAME_2, UNITY_BUILD_URL, UNITY_BUILD_URL_2 } from '../config'
 
